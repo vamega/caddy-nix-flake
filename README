@@ -1,0 +1,20 @@
+### Updating
+
+1. Delete the go.sum and go.mod files.
+2. Run the following set of commands 
+   ```
+   go mod init caddy
+   go mod edit -require=github.com/caddyserver/caddy/v2@v<version>
+   go mod tidy
+   ```
+2. Run ``
+3. It will fail with a message about incompatible versions of antr.
+4. Run `go get -t`, this will resolve the incompatible versions of antlr.
+5. Run `go mod tidy` again, this shouldn't have any affect, but will succeed this time.
+6. Commit the `go.mod` and `go.sum` files
+
+Issues relevant to the above procedure:
+1. https://github.com/caddyserver/xcaddy/pull/92
+2. https://github.com/caddyserver/caddy/issues/4331
+
+
